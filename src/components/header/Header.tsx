@@ -2,6 +2,8 @@ import React from "react";
 import { SearchBar } from "./Search";
 import { PlaylistButton } from "./PlaylistButton";
 
+import './header.css';
+
 /**
  * Both headers are present on page but only one is visible and renders
  */
