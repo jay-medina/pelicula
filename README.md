@@ -1,6 +1,9 @@
 # Pelicula
 Demo movie viewer
 
+## Icons
+All icons are from https://heroicons.com/
+
 ## TODO
 - Color Scheme
     - Black
@@ -13,6 +16,7 @@ Demo movie viewer
     - Searchbar spans the background
     - Has a button that allows searching
     - Wire up the searchbar to the api
+    - Add a query param search
 - Render results in a grid pattern
     - Display results in a grid
     - Implement an infinite scroll
@@ -24,4 +28,6 @@ Demo movie viewer
 - Have a way to view the playlist
 - Include a footer that says "My favorite color is {your favorite color}"
 - Ensure the view is responsive
-- 
+- Build bundle and deploy to github
+
+## Done
