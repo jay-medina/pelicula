@@ -2,6 +2,9 @@
     margin: 1rem;
     display: flex;
     justify-content: space-between;
+    position: fixed;
+    width: 94%;
+    top: 0;
 }
 
 .app__header_mobile {
@@ -21,6 +24,7 @@
     border: 1px solid var(--white);
     padding: 0 0.25rem;
     border-radius: 3px;
+    transition: background-color 0.25s;
 }
 
 .app__header_search:hover {

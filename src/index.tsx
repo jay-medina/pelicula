@@ -1,15 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Header } from "./components/header/Header";
+import { MovieApp } from "./movie-app";
 
 import "./index.css";
 
-function App() {
-    return (
-        <div className="app">
-            <Header />
-        </div>
-    );
-}
-
-ReactDOM.render(<App />, document.getElementById("app"));
+ReactDOM.render(<MovieApp />, document.getElementById("app"));

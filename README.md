@@ -5,16 +5,8 @@ Demo movie viewer
 All icons are from https://heroicons.com/
 
 ## TODO
-- Color Scheme
-    - Black
-    - White
-    - Red
 - Render the main view
-  - Has header splash image
-    - Background is faded
   - Create Search bar
-    - Searchbar spans the background
-    - Has a button that allows searching
     - Wire up the searchbar to the api
     - Add a query param search
 - Render results in a grid pattern
@@ -31,3 +23,13 @@ All icons are from https://heroicons.com/
 - Build bundle and deploy to github
 
 ## Done
+- Color Scheme
+    - Black
+    - White
+    - Red
+
+- Render the main view
+  - Has header splash image
+    - Background is faded
+  - Create Search bar
+    - Searchbar spans the background
