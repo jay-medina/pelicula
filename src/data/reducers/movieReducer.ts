@@ -1,5 +1,5 @@
-import { MovieAction } from "./actions";
-import { Movies } from "./types";
+import { MovieAction } from "../actions";
+import { Movies } from "../types";
 
 const initialState: Movies = {};
 

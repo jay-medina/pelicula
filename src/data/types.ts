@@ -13,10 +13,15 @@ export interface Movie {
     genre?: string;
 }
 
+export interface SearchResults {
+    query?: string;
+}
+
 export type Movies = Record<Movie["id"], Movie>;
 
 export interface AppState {
     movies: Movies;
+    searchResults: SearchResults;
 }
 
 export type ThunkDispatch = ReduxThunkDispatch<AppState, unknown, AnyAction>;

@@ -38,3 +38,7 @@ export function getListOfMovies(state: AppState, { query }: GetListOfMoviesPaylo
 export function getMovieRating(state: AppState, payload: GetMoviePayload): Movie["rating"] {
     return state.movies[payload.id]?.rating;
 }
+
+export function getSearchQuery(state: AppState): string | undefined {
+    return state.searchResults.query;
+}

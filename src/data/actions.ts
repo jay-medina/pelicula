@@ -15,6 +15,13 @@ interface UpdateMovie {
     };
 }
 
+interface UpdateSearchQuery {
+    type: "movie/updateSearchQuery";
+    payload: {
+        query: string;
+    };
+}
+
 export function addMovie(payload: AddMovie["payload"]): AddMovie {
     return {
         type: "movie/addMovie",
@@ -29,4 +36,12 @@ export function updateMovie(payload: UpdateMovie["payload"]): UpdateMovie {
     };
 }
 
+export function updateSearchQuery(payload: UpdateSearchQuery["payload"]): UpdateSearchQuery {
+    return {
+        type: "movie/updateSearchQuery",
+        payload,
+    };
+}
+
 export type MovieAction = AddMovie | UpdateMovie;
+export type SearchAction = UpdateSearchQuery;
