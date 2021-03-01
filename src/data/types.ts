@@ -9,6 +9,8 @@ export interface Movie {
     largePoster: string;
     type: string;
     year: string;
+    rating?: string;
+    genre?: string;
 }
 
 export type Movies = Record<Movie["id"], Movie>;
