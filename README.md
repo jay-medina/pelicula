@@ -6,12 +6,18 @@ All icons are from https://heroicons.com/
 
 ## TODO
 - Render the main view
+ - Has header splash image
+   - Hide title content when scrolling
   - Create Search bar
     - Wire up the searchbar to the api
+    - Debounce searches
     - Add a query param search
+    - has black background when scrolling
 - Render results in a grid pattern
     - Display results in a grid
     - Implement an infinite scroll
+    - figure out pagination
+        - this might need to fetch multiple results (sigh)
 - Have a way to save movie to a playlist
   - Store movies in local storage (no way to persist)
   - On Desktop: this should be a sidepanel view 
