@@ -26,9 +26,9 @@ function getOtherPosterSizes(res: MovieResponse): [string, string] {
 
     const poster = res.Poster;
 
-    const [fileName] = poster.split("@._V1_");
+    const [fileName] = poster.split("._V1_");
 
-    return [`${fileName}@._V1_SX600.jpg`, `${fileName}@._V1_SX900.jpg`];
+    return [`${fileName}._V1_SX600.jpg`, `${fileName}._V1_SX900.jpg`];
 }
 
 function responseToMovie(res: MovieResponse): Movie {
@@ -47,34 +47,25 @@ function responseToMovie(res: MovieResponse): Movie {
 
 export function searchForMovies(payload: SearchForMoviesPayload) {
     return async (dispatch: ThunkDispatch, getState: () => AppState) => {
-        // const state = getState();
-
         // if (!morePokemonExist(state) || isLoading(state)) return;
 
         // dispatch(updateFetching({ fetching: true }));
 
-        // const data = await search(payload);
+        const data = await search(payload);
 
-        // const { results } = data;
+        const { Search } = data;
 
-        const search = [
-            {
-                Poster:
-                    "https://m.media-amazon.com/images/M/MV5BZGE1MDg5M2MtNTkyZS00MTY5LTg1YzUtZTlhZmM1Y2EwNmFmXkEyXkFqcGdeQXVyNjA3OTI0MDc@._V1_SX300.jpg",
-                Title: "Soul",
-                Type: "movie",
-                Year: "2020",
-                imdbID: "tt2948372",
-            },
-        ];
+        const asMovie = Search.map(responseToMovie);
 
-        search.map(responseToMovie).forEach((movie) => {
+        asMovie.forEach((movie) => {
             dispatch(addMovie(movie));
+
+            if (movie.title.toLowerCase() === payload.query.toLowerCase()) {
+                dispatch(searchForMovieById({ id: movie.id }));
+            }
         });
 
-        // if any of them match fetch details
-
-        // console.log("results", results);
+        console.log("results", data);
     };
 }
 

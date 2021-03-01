@@ -6,6 +6,13 @@ const initialState: Movies = {};
 export function movies(state = initialState, action: MovieAction): Movies {
     if (action.type === "movie/addMovie") {
         const { payload } = action;
+        const oldMovie = state[payload.id];
+
+        // dont add it if it already exists
+        if(oldMovie) {
+            return state;
+        }
+
         return {
             ...state,
             [payload.id]: payload,

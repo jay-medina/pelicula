@@ -13,7 +13,7 @@ export function Splash({ movie }: SplashProps) {
             <div
                 className="app__splash_img"
                 style={{
-                    backgroundImage: `url("${movie.mediumPoster}")`,
+                    backgroundImage: `url("${movie.largePoster}")`,
                 }}
             ></div>
             <div className="app__splash_content">

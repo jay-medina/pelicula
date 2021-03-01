@@ -4,7 +4,7 @@ interface GetListOfMoviesPayload {
     query?: string;
 }
 
-interface GetMovieRatingPayload {
+interface GetMoviePayload {
     id: string;
 }
 
@@ -20,10 +20,14 @@ export function getListOfMovies(state: AppState, { query }: GetListOfMoviesPaylo
     // we want to put exact matches first then fuzzy matches
     const li: Movie[] = [];
 
+    const queryLowerCased = query.toLowerCase();
+
     for (const movie of movies) {
-        if (movie.title === query) {
+        const titleLowerCased = movie.title.toLowerCase();
+
+        if (titleLowerCased === queryLowerCased) {
             li.unshift(movie);
-        } else if (movie.title.includes(query)) {
+        } else if (titleLowerCased.includes(queryLowerCased)) {
             li.push(movie);
         }
     }
@@ -31,6 +35,6 @@ export function getListOfMovies(state: AppState, { query }: GetListOfMoviesPaylo
     return li;
 }
 
-export function getMovieRating(state: AppState, { id }: GetMovieRatingPayload): Movie["rating"] {
-    return state.movies[id]?.rating;
+export function getMovieRating(state: AppState, payload: GetMoviePayload): Movie["rating"] {
+    return state.movies[payload.id]?.rating;
 }
