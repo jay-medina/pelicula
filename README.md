@@ -20,6 +20,8 @@ All icons are from https://heroicons.com/
 - Have a way to view the playlist
 - Include a footer that says "My favorite color is {your favorite color}"
 - Ensure the view is responsive
+- Add a No search results page
+- Add a page for errors
 - Build bundle and deploy to github
 
 ## Done
