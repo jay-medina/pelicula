@@ -5,6 +5,16 @@ interface AddMovie {
     payload: Movie;
 }
 
+interface UpdateMovie {
+    type: "movie/updateMovie";
+    payload: {
+        id: string;
+        title: string;
+        rating: string;
+        genre: string;
+    };
+}
+
 export function addMovie(payload: AddMovie["payload"]): AddMovie {
     return {
         type: "movie/addMovie",
@@ -12,4 +22,11 @@ export function addMovie(payload: AddMovie["payload"]): AddMovie {
     };
 }
 
-export type MovieAction = AddMovie;
+export function updateMovie(payload: UpdateMovie["payload"]): UpdateMovie {
+    return {
+        type: "movie/updateMovie",
+        payload,
+    };
+}
+
+export type MovieAction = AddMovie | UpdateMovie;
