@@ -1,37 +1,40 @@
 import React from "react";
+import { Movie } from "../../data/types";
 
 import "./splash.css";
 
 interface SplashProps {
-    imageUrl: string;
-    year: string;
-    title: string;
-    genre: string;
-    rated: string;
+    movie: Movie;
 }
 
-export function Splash(props: SplashProps) {
+export function Splash({ movie }: SplashProps) {
     return (
         <div className="app__splash">
             <div
                 className="app__splash_img"
                 style={{
-                    backgroundImage: `url("${props.imageUrl}")`,
+                    backgroundImage: `url("${movie.mediumPoster}")`,
                 }}
             ></div>
             <div className="app__splash_content">
                 <div>
-                    <span className="app__splash_title">{props.title}</span> ({props.year})
+                    <span className="app__splash_title">{movie.title}</span> ({movie.year})
                 </div>
                 <div className="app__splash_info">
-                    <Rating rated={props.rated} />
-                    <span className="app__splash_genre">{props.genre}</span>
+                    <Rating rating={movie.rating} />
+                    <span className="app__splash_genre">{movie.genre}</span>
                 </div>
             </div>
         </div>
     );
 }
 
-function Rating({ rated }: { rated: string }) {
-    return <div className="app__rating">{rated}</div>;
+interface RatingProps {
+    rating: Movie["rating"];
+}
+
+function Rating({ rating }: RatingProps) {
+    if (!rating) return null;
+
+    return <div className="app__rating">{rating}</div>;
 }
