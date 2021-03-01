@@ -1,9 +1,8 @@
+import { Movie } from "./types";
+
 interface AddMovie {
     type: "movie/addMovie";
-    payload: {
-        id: string;
-        title: string;
-    };
+    payload: Movie;
 }
 
 export function addMovie(payload: AddMovie["payload"]): AddMovie {
