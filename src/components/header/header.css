@@ -3,13 +3,22 @@
     display: flex;
     justify-content: space-between;
     position: fixed;
-    width: 94%;
+    width: 100vw;
     top: 0;
     z-index: 50;
+    transition: background 0.25s;
+}
+
+.app__header_scrolled {
+    background-color: black;
 }
 
 .app__header_mobile {
     display: none;
+}
+
+.app__header_scrolled {
+    background-color: black;
 }
 
 .app__header_title {

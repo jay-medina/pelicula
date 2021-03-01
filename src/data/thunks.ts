@@ -45,8 +45,8 @@ function responseToMovie(res: MovieResponse): Movie {
     };
 }
 
-export function searchForMovies(payload: SearchForMoviesPayload) {
-    return async (dispatch: ThunkDispatch, getState: () => AppState) => {
+function searchAndAddMovies(payload: SearchForMoviesPayload) {
+    return async (dispatch: ThunkDispatch) => {
         // if (!morePokemonExist(state) || isLoading(state)) return;
 
         // dispatch(updateFetching({ fetching: true }));
@@ -66,6 +66,20 @@ export function searchForMovies(payload: SearchForMoviesPayload) {
         });
 
         console.log("results", data);
+    };
+}
+
+export function searchForMovies(payload: SearchForMoviesPayload) {
+    return async (dispatch: ThunkDispatch) => {
+        // if (!morePokemonExist(state) || isLoading(state)) return;
+
+        // dispatch(updateFetching({ fetching: true }));
+
+        dispatch(searchAndAddMovies({ query: payload.query, page: 1 }));
+        dispatch(searchAndAddMovies({ query: payload.query, page: 2 }));
+        dispatch(searchAndAddMovies({ query: payload.query, page: 3 }));
+        dispatch(searchAndAddMovies({ query: payload.query, page: 4 }));
+        dispatch(searchAndAddMovies({ query: payload.query, page: 5 }));
     };
 }
 

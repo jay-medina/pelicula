@@ -6,6 +6,10 @@
     --darker-red: #a8060b;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 html,
 body {
     margin: 0;
@@ -35,4 +39,3 @@ body {
     font-size: 0.65rem;
     border-radius: 3px;
 }
-

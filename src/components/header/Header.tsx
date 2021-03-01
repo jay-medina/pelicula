@@ -1,24 +1,44 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import classNames from "classnames";
 import { SearchBar } from "./Search";
 import { PlaylistButton } from "./PlaylistButton";
 
-import './header.css';
+import "./header.css";
+
+const MIDWAY_POINT = 60;
 
 /**
  * Both headers are present on page but only one is visible and renders
  */
 export function Header() {
+    const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        const onscroll = () => {
+            setScrolled(window.pageYOffset > MIDWAY_POINT);
+        };
+
+        window.onscroll = onscroll;
+        return () => {
+            window.removeEventListener("onscroll", onscroll);
+        };
+    }, []);
+
     return (
         <>
-            <DesktopHeader />
-            <MobileHeader />
+            <DesktopHeader scrolled={scrolled} />
+            <MobileHeader scrolled={scrolled} />
         </>
     );
 }
 
-function DesktopHeader() {
+function DesktopHeader({ scrolled }: { scrolled?: boolean }) {
+    const className = classNames("app__header app__header_desktop", {
+        app__header_scrolled: scrolled,
+    });
+
     return (
-        <div className="app__header app__header_desktop">
+        <div className={className}>
             <HeaderTitle />
             <SearchBar />
             <PlaylistButton />
@@ -26,9 +46,13 @@ function DesktopHeader() {
     );
 }
 
-function MobileHeader() {
+function MobileHeader({ scrolled }: { scrolled?: boolean }) {
+    const className = classNames("app__header app__header_mobile", {
+        app__header_scrolled: scrolled,
+    });
+
     return (
-        <div className="app__header app__header_mobile">
+        <div className={className}>
             <div className="app__header_mobile_title">
                 <HeaderTitle />
                 <PlaylistButton />
