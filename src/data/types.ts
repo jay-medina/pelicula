@@ -1,9 +1,14 @@
 import { AnyAction, Store } from "redux";
 import { ThunkDispatch as ReduxThunkDispatch } from "redux-thunk";
 
-interface Movie {
+export interface Movie {
     id: string;
     title: string;
+    poster: string;
+    mediumPoster: string;
+    largePoster: string;
+    type: string;
+    year: string;
 }
 
 export type Movies = Record<Movie["id"], Movie>;
