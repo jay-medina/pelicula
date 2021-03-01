@@ -35,6 +35,7 @@
     border: 1px solid var(--white);
     text-transform: uppercase;
     padding: 0.05rem 0.15rem;
+    white-space: nowrap;
 }
 
 .app__splash_genre {

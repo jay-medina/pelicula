@@ -4,7 +4,7 @@ import { AppState, ThunkDispatch, Movie } from "./types";
 import { getMovieRating } from "./selectors";
 
 interface SearchForMoviesPayload {
-    query: string;
+    query?: string;
     page?: number;
 }
 
@@ -50,8 +50,11 @@ function searchAndAddMovies(payload: SearchForMoviesPayload) {
         // if (!morePokemonExist(state) || isLoading(state)) return;
 
         // dispatch(updateFetching({ fetching: true }));
+        const { query } = payload;
 
-        const data = await search(payload);
+        if (!query) return;
+
+        const data = await search({ query, page: payload.page });
 
         const { Search } = data;
 
@@ -60,7 +63,7 @@ function searchAndAddMovies(payload: SearchForMoviesPayload) {
         asMovie.forEach((movie) => {
             dispatch(addMovie(movie));
 
-            if (movie.title.toLowerCase() === payload.query.toLowerCase()) {
+            if (movie.title.toLowerCase() === query.toLowerCase()) {
                 dispatch(searchForMovieById({ id: movie.id }));
             }
         });

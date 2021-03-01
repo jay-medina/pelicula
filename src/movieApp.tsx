@@ -1,6 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
+import { debounce } from "lodash";
 import { Provider, useDispatch, useSelector } from "react-redux";
 import { AppState, AppStore, Movie } from "./data/types";
+import { getSearchQuery } from "./data/selectors";
 
 import { Header } from "./components/header/Header";
 import { Splash } from "./components/splash/Splash";
@@ -13,22 +15,35 @@ interface Props {
 }
 
 function MovieLayout() {
-    const query = "batman";
+    const query = useSelector(getSearchQuery);
     const dispatch = useDispatch();
     const movies = useSelector<AppState, Movie[]>((state) => getListOfMovies(state, { query }));
 
-    // const search = useCallback(() => {
-    //     dispatch(searchForMovies({ query: "s" }));
-    // }, [dispatch]);
+    const debouncedSearch = useCallback(
+        (query?: string) => {
+            debounce(() => {
+                dispatch(searchForMovies({ query }));
+                console.log("i searched");
+            }, 300)();
+        },
+        [dispatch]
+    );
 
     useEffect(() => {
-        dispatch(searchForMovies({ query }));
-        console.log("i searched");
-    }, [dispatch]);
+        debouncedSearch(query);
+        console.log("call to search");
+    }, [debouncedSearch, query]);
 
     // TODO Add a default state: Update the
     if (movies.length === 0) {
-        return <>No movies</>;
+        return (
+            <div className="app">
+                <div>
+                    No Movies
+                </div>
+                <Header />
+            </div>
+        )
     }
 
     const [firstMovie] = movies;
