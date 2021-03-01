@@ -3,6 +3,11 @@ import { AppState, Movie } from "./types";
 interface GetListOfMoviesPayload {
     query?: string;
 }
+
+interface GetMovieRatingPayload {
+    id: string;
+}
+
 /**
  * Returns a list of movies that match the search query
  * If query is empty, just return the first 100
@@ -24,4 +29,8 @@ export function getListOfMovies(state: AppState, { query }: GetListOfMoviesPaylo
     }
 
     return li;
+}
+
+export function getMovieRating(state: AppState, { id }: GetMovieRatingPayload): Movie["rating"] {
+    return state.movies[id]?.rating;
 }
