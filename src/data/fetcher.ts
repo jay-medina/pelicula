@@ -22,9 +22,10 @@ interface MovieResponse {
 }
 
 interface SearchResponse {
-    Response: "True";
-    Search: MovieResponse[];
+    Response: "True" | "False";
+    Search?: MovieResponse[];
     totalResults: string;
+    Error?: string;
 }
 
 interface SearchDetailsResponse {

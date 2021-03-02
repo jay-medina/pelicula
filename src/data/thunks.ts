@@ -58,6 +58,8 @@ function searchAndAddMovies(payload: SearchForMoviesPayload) {
 
         const { Search } = data;
 
+        if (!Search) return;
+
         const asMovie = Search.map(responseToMovie);
 
         asMovie.forEach((movie) => {
@@ -73,11 +75,7 @@ function searchAndAddMovies(payload: SearchForMoviesPayload) {
 }
 
 export function searchForMovies(payload: SearchForMoviesPayload) {
-    return async (dispatch: ThunkDispatch) => {
-        // if (!morePokemonExist(state) || isLoading(state)) return;
-
-        // dispatch(updateFetching({ fetching: true }));
-
+    return (dispatch: ThunkDispatch) => {
         dispatch(searchAndAddMovies({ query: payload.query, page: 1 }));
         dispatch(searchAndAddMovies({ query: payload.query, page: 2 }));
         dispatch(searchAndAddMovies({ query: payload.query, page: 3 }));
