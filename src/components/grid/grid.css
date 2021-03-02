@@ -1,8 +1,22 @@
 .app__grid {
     display: flex;
+    flex-direction: column;
+    margin: 1rem;
+}
+
+.app__grid_items {
+    display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin: 1rem;
+}
+
+.app__grid_title {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.app__grid_no_movies {
+    margin-top: 4rem;
 }
 
 .app__grid_item_container {
@@ -40,4 +54,10 @@
 .app__grid_item_title {
     font-size: 0.65rem;
     font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+    .app__grid_no_movies {
+        margin-top: 6rem;
+    }
 }

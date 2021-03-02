@@ -33,11 +33,10 @@ function MovieLayout() {
         search();
     }, [dispatch, query]);
 
-    // TODO Add a default state: Update the
     if (movies.length === 0) {
         return (
             <div className="app">
-                <div>No Movies</div>
+                <Grid movies={movies} onClick={setPos} query={query} />
                 <Header />
                 <LoadingScreen isLoading={loading} />
             </div>

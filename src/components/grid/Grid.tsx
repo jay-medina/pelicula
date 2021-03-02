@@ -5,7 +5,13 @@ import "./grid.css";
 
 interface GridProps {
     movies: Movie[];
+    query: string;
     onClick: (pos: number) => void;
+}
+
+interface GridTitleProps {
+    movies: Movie[];
+    query: string;
 }
 
 interface GridItemProps {
@@ -13,14 +19,25 @@ interface GridItemProps {
     onClick: () => void;
 }
 
-export function Grid({ movies, onClick }: GridProps) {
+export function Grid({ movies, onClick, query }: GridProps) {
     return (
         <div className="app__grid">
-            {movies.map((movie, index) => (
-                <GridItem key={movie.id} movie={movie} onClick={() => onClick(index)} />
-            ))}
+            <GridTitle movies={movies} query={query}></GridTitle>
+            <div className="app__grid_items">
+                {movies.map((movie, index) => (
+                    <GridItem key={movie.id} movie={movie} onClick={() => onClick(index)} />
+                ))}
+            </div>
         </div>
     );
+}
+
+function GridTitle(props: GridTitleProps) {
+    if (props.movies.length === 0) {
+        return <div className="app__grid_title app__grid_no_movies">No movies match {props.query}</div>;
+    }
+
+    return <div className="app__grid_title">{props.movies.length} Movies</div>;
 }
 
 function GridItem({ movie, onClick }: GridItemProps) {

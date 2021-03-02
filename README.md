@@ -5,15 +5,20 @@ Demo movie viewer
 All icons are from https://heroicons.com/
 
 ## TODO
-- Render the main view
-  - Create Search bar
-    - add a loading animation
-    - Add a query param search
+- Splash Image
+  - Have a save button here
+  - Have a way to expand Splash image to view more info? 
+- Create Search bar
+  - parse query params 
+
+- on top of the grid movies
+  - if user clicks on playlist button,
+    - playlist displays on the grid area
+    - splash should show first item and is clickable like the others 
+
 - Have a way to save movie to a playlist
   - Store movies in local storage (no way to persist)
-  - On Desktop: this should be a sidepanel view 
-    - Saving automatically updates sidepanel
-  - On Mobile: this should take up the whole screen
+  - this should be a grid view 
 - Have a way to view the playlist
 - Include a footer that says "My favorite color is {your favorite color}"
 - Ensure the view is responsive
@@ -36,9 +41,15 @@ All icons are from https://heroicons.com/
     - Wire up the searchbar to the api
     - Debounce searches
     - Fetch the first results if they dont exist
+    - add a loading animation
 
 - Render results in a grid pattern
     - Display results in a grid
+    - on top of the grid movies
+      - Have text that display "X Results"
+      - if no results, 
+        - splash displays a random movie
+        - Display text show "No Results"
 
 
 ## Summary Questions
