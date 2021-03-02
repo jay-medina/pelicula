@@ -64,10 +64,6 @@ function searchAndAddMovies(payload: SearchForMoviesPayload) {
 
         asMovie.forEach((movie) => {
             dispatch(addMovie(movie));
-
-            if (movie.title.toLowerCase() === query.toLowerCase()) {
-                dispatch(searchForMovieById({ id: movie.id }));
-            }
         });
 
         console.log("results", data);
