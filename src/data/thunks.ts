@@ -4,7 +4,7 @@ import { AppState, ThunkDispatch, Movie } from "./types";
 import { getMovieRating } from "./selectors";
 
 interface SearchForMoviesPayload {
-    query?: string;
+    query: string;
     page?: number;
 }
 

@@ -1,9 +1,10 @@
-import React, { ChangeEvent, useCallback } from "react";
+import React, { ChangeEvent, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import classNames from "classnames";
 import { Search } from "../icons/icons";
 import { getSearchQuery } from "../../data/selectors";
 import { updateSearchQuery } from "../../data/actions";
+import { debounce } from "lodash";
 
 type SearchBarProps = {
     className?: string;
@@ -11,19 +12,23 @@ type SearchBarProps = {
 };
 
 export function SearchBar(props: SearchBarProps) {
-    const dispatch = useDispatch();
     const searchQuery = useSelector(getSearchQuery);
+    const [searchVal, setSearchVal] = useState(searchQuery);
+    const dispatch = useDispatch();
     const className = classNames("app__header_search", props.className);
 
-    const onSearch = useCallback(
-        (query = "") => {
-            dispatch(updateSearchQuery({ query }));
-        },
+    const onSearch = useMemo(
+        () =>
+            debounce((query: string) => {
+                dispatch(updateSearchQuery({ query }));
+            }, 500),
         [dispatch]
     );
 
     const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-        onSearch(e.currentTarget.value);
+        const query = e.currentTarget.value || "";
+        setSearchVal(query);
+        onSearch(query);
     };
 
     return (
@@ -32,7 +37,7 @@ export function SearchBar(props: SearchBarProps) {
             <input
                 className="app__header_search_input"
                 placeholder="Search..."
-                value={searchQuery}
+                value={searchVal}
                 onChange={onChange}
             ></input>
         </div>

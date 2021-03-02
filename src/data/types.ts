@@ -14,7 +14,7 @@ export interface Movie {
 }
 
 export interface SearchResults {
-    query?: string;
+    query: string;
 }
 
 export type Movies = Record<Movie["id"], Movie>;
