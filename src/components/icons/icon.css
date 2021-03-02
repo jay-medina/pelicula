@@ -1,5 +1,6 @@
 .bookmark__icon,
-.search__icon {
+.search__icon,
+.star__icon {
     width: 14px;
     height: 14px;
 }

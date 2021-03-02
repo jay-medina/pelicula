@@ -5,25 +5,27 @@ import "./grid.css";
 
 interface GridProps {
     movies: Movie[];
+    onClick: (pos: number) => void;
 }
 
 interface GridItemProps {
     movie: Movie;
+    onClick: () => void;
 }
 
-export function Grid({ movies }: GridProps) {
+export function Grid({ movies, onClick }: GridProps) {
     return (
         <div className="app__grid">
-            {movies.map((movie) => (
-                <GridItem key={movie.id} movie={movie} />
+            {movies.map((movie, index) => (
+                <GridItem key={movie.id} movie={movie} onClick={() => onClick(index)} />
             ))}
         </div>
     );
 }
 
-function GridItem({ movie }: GridItemProps) {
+function GridItem({ movie, onClick }: GridItemProps) {
     return (
-        <div className="app__grid_item_container">
+        <div className="app__grid_item_container" onClick={onClick}>
             <div
                 className="app__grid_item app__grid_item_background"
                 style={{

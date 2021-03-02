@@ -3,6 +3,7 @@ import { SearchResults } from "../types";
 
 const initialState: SearchResults = {
     query: "batman",
+    isLoading: false,
 };
 
 export function searchResults(state = initialState, action: SearchAction): SearchResults {
@@ -10,6 +11,13 @@ export function searchResults(state = initialState, action: SearchAction): Searc
         return {
             ...state,
             query: action.payload.query,
+        };
+    }
+
+    if (action.type === "movie/setLoading") {
+        return {
+            ...state,
+            isLoading: action.payload.isLoading,
         };
     }
 

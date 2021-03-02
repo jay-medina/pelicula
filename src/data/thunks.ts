@@ -72,19 +72,18 @@ function searchAndAddMovies(payload: SearchForMoviesPayload) {
         asMovie.forEach((movie) => {
             dispatch(addMovie(movie));
         });
-
-        console.log("results", data);
     };
 }
 
 export function searchForMovies(payload: SearchForMoviesPayload) {
-    return (dispatch: ThunkDispatch) => {
-        dispatch(searchAndAddMovies({ query: payload.query, page: 1 }));
-        dispatch(searchAndAddMovies({ query: payload.query, page: 2 }));
-        dispatch(searchAndAddMovies({ query: payload.query, page: 3 }));
-        dispatch(searchAndAddMovies({ query: payload.query, page: 4 }));
-        dispatch(searchAndAddMovies({ query: payload.query, page: 5 }));
-    };
+    return (dispatch: ThunkDispatch) =>
+        Promise.all([
+            dispatch(searchAndAddMovies({ query: payload.query, page: 1 })),
+            dispatch(searchAndAddMovies({ query: payload.query, page: 2 })),
+            dispatch(searchAndAddMovies({ query: payload.query, page: 3 })),
+            dispatch(searchAndAddMovies({ query: payload.query, page: 4 })),
+            dispatch(searchAndAddMovies({ query: payload.query, page: 5 })),
+        ]);
 }
 
 export function searchForMovieById(payload: SearchForMovieByIdPayload) {

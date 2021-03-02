@@ -22,6 +22,13 @@ interface UpdateSearchQuery {
     };
 }
 
+interface SetLoading {
+    type: "movie/setLoading";
+    payload: {
+        isLoading: boolean;
+    };
+}
+
 export function addMovie(payload: AddMovie["payload"]): AddMovie {
     return {
         type: "movie/addMovie",
@@ -43,5 +50,12 @@ export function updateSearchQuery(payload: UpdateSearchQuery["payload"]): Update
     };
 }
 
+export function setLoading(payload: SetLoading["payload"]): SetLoading {
+    return {
+        type: "movie/setLoading",
+        payload,
+    };
+}
+
 export type MovieAction = AddMovie | UpdateMovie;
-export type SearchAction = UpdateSearchQuery;
+export type SearchAction = UpdateSearchQuery | SetLoading;

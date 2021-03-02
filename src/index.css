@@ -39,3 +39,44 @@ body {
     font-size: 0.65rem;
     border-radius: 3px;
 }
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.app__loading_screen {
+    display: none;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 2;
+}
+
+.app__loading_text {
+    margin-right: 0.25rem;
+}
+
+.app__loading_star {
+    position: relative;
+    top: 2px;
+    width: 24px;
+    height: 24px;
+    animation-name: spin;
+    animation-duration: 2000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.app__loading_screen_show {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

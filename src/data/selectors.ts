@@ -42,3 +42,7 @@ export function getMovieRating(state: AppState, payload: GetMoviePayload): Movie
 export function getSearchQuery(state: AppState): string {
     return state.searchResults.query;
 }
+
+export function isLoading(state: AppState): boolean {
+    return state.searchResults.isLoading;
+}
