@@ -10,12 +10,12 @@ interface GetMoviePayload {
 
 /**
  * Returns a list of movies that match the search query
- * If query is empty, just return the first 100
+ * If query is empty, just return the first 1000
  */
 export function getListOfMovies(state: AppState, { query }: GetListOfMoviesPayload): Movie[] {
     const movies = Object.values(state.movies);
 
-    if (!query) return movies.slice(0, 100);
+    if (!query) return movies.slice(0, 1000);
 
     // we want to put exact matches first then fuzzy matches
     const li: Movie[] = [];

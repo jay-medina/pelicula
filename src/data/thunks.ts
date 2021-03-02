@@ -3,6 +3,8 @@ import { addMovie, updateMovie } from "./actions";
 import { AppState, ThunkDispatch, Movie } from "./types";
 import { getMovieRating } from "./selectors";
 
+const demoImg = "/images/movie.jpg";
+
 interface SearchForMoviesPayload {
     query: string;
     page?: number;
@@ -26,6 +28,10 @@ function getOtherPosterSizes(res: MovieResponse): [string, string] {
 
     const poster = res.Poster;
 
+    if (poster === "N/A") {
+        return [demoImg, demoImg];
+    }
+
     const [fileName] = poster.split("._V1_");
 
     return [`${fileName}._V1_SX600.jpg`, `${fileName}._V1_SX900.jpg`];
@@ -33,13 +39,14 @@ function getOtherPosterSizes(res: MovieResponse): [string, string] {
 
 function responseToMovie(res: MovieResponse): Movie {
     const [medium, large] = getOtherPosterSizes(res);
+    const poster = res.Poster === "N/A" ? demoImg : res.Poster;
 
     return {
         id: res.imdbID,
         title: res.Title,
         type: res.Type,
         year: res.Year,
-        poster: res.Poster,
+        poster,
         mediumPoster: medium,
         largePoster: large,
     };

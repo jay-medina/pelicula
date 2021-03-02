@@ -7,8 +7,6 @@ All icons are from https://heroicons.com/
 ## TODO
 - Render the main view
   - Create Search bar
-    - Wire up the searchbar to the api
-    - Debounce searches
     - add a loading animation
     - Add a query param search
 - Have a way to save movie to a playlist
@@ -35,6 +33,9 @@ All icons are from https://heroicons.com/
   - Create Search bar
     - Searchbar spans the background
     - has black background when scrolling
+    - Wire up the searchbar to the api
+    - Debounce searches
+    - Fetch the first results if they dont exist
 
 - Render results in a grid pattern
     - Display results in a grid
