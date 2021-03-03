@@ -48,7 +48,7 @@ function MovieLayout() {
     return (
         <div className="app">
             <Splash movie={selectedMovie} />
-            <Grid movies={movies} onClick={setPos} />
+            <Grid movies={movies} onClick={setPos} query={query} />
             <Header />
             <LoadingScreen isLoading={loading} />
         </div>

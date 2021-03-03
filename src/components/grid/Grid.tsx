@@ -33,11 +33,15 @@ export function Grid({ movies, onClick, query }: GridProps) {
 }
 
 function GridTitle(props: GridTitleProps) {
+    if (props.query.length === 0) {
+        return <div className="app__grid_title">All Movies</div>;
+    }
+
     if (props.movies.length === 0) {
         return <div className="app__grid_title app__grid_no_movies">No movies match {props.query}</div>;
     }
 
-    return <div className="app__grid_title">{props.movies.length} Movies</div>;
+    return <div className="app__grid_title">{props.query} Movies</div>;
 }
 
 function GridItem({ movie, onClick }: GridItemProps) {
