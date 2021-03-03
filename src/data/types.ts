@@ -11,11 +11,13 @@ export interface Movie {
     year: string;
     rating?: string;
     genre?: string;
+    saved: boolean;
 }
 
 export interface SearchResults {
     query: string;
     isLoading: boolean;
+    viewSaved: boolean;
 }
 
 export type Movies = Record<Movie["id"], Movie>;

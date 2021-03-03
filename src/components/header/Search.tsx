@@ -2,7 +2,7 @@ import React, { ChangeEvent, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import classNames from "classnames";
 import { Search } from "../icons/icons";
-import { getSearchQuery } from "../../data/selectors";
+import { getSearchQuery, isViewingSaved } from "../../data/selectors";
 import { updateSearchQuery } from "../../data/actions";
 import { debounce } from "lodash";
 
@@ -14,6 +14,7 @@ type SearchBarProps = {
 export function SearchBar(props: SearchBarProps) {
     const searchQuery = useSelector(getSearchQuery);
     const [searchVal, setSearchVal] = useState(searchQuery);
+    const viewSaved = useSelector(isViewingSaved);
     const dispatch = useDispatch();
     const className = classNames("app__header_search", props.className);
 
@@ -30,6 +31,8 @@ export function SearchBar(props: SearchBarProps) {
         setSearchVal(query);
         onSearch(query);
     };
+
+    if (viewSaved) return null;
 
     return (
         <div className={className}>

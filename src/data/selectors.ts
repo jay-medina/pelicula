@@ -35,6 +35,12 @@ export function getListOfMovies(state: AppState, { query }: GetListOfMoviesPaylo
     return li;
 }
 
+export function getSavedMovies(state: AppState): Movie[] {
+    const allMovies = Object.values(state.movies);
+
+    return allMovies.filter((movie) => movie.saved);
+}
+
 export function getMovieRating(state: AppState, payload: GetMoviePayload): Movie["rating"] {
     return state.movies[payload.id]?.rating;
 }
@@ -45,4 +51,8 @@ export function getSearchQuery(state: AppState): string {
 
 export function isLoading(state: AppState): boolean {
     return state.searchResults.isLoading;
+}
+
+export function isViewingSaved(state: AppState): boolean {
+    return state.searchResults.viewSaved;
 }

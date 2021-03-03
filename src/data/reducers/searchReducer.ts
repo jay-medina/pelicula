@@ -4,6 +4,7 @@ import { SearchResults } from "../types";
 const initialState: SearchResults = {
     query: "batman",
     isLoading: false,
+    viewSaved: false,
 };
 
 export function searchResults(state = initialState, action: SearchAction): SearchResults {
@@ -18,6 +19,13 @@ export function searchResults(state = initialState, action: SearchAction): Searc
         return {
             ...state,
             isLoading: action.payload.isLoading,
+        };
+    }
+
+    if (action.type === "movie/viewSaved") {
+        return {
+            ...state,
+            viewSaved: action.payload.view,
         };
     }
 

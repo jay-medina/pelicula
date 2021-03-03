@@ -8,13 +8,6 @@ All icons are from https://heroicons.com/
 - Splash Image
   - Have a save button here
   - Have a way to expand Splash image to view more info? 
-- Create Search bar
-  - parse query params 
-
-- on top of the grid movies
-  - if user clicks on playlist button,
-    - playlist displays on the grid area
-    - splash should show first item and is clickable like the others 
 
 - Have a way to save movie to a playlist
   - Store movies in local storage (no way to persist)
@@ -22,15 +15,21 @@ All icons are from https://heroicons.com/
 - Have a way to view the playlist
 - Include a footer that says "My favorite color is {your favorite color}"
 - Ensure the view is responsive
-- Add a No search results page
-- Add a page for errors
+
 - Build bundle and deploy to github
+
+## Nice to Haves
+- Create Search bar
+  - parse query params 
+
 
 ## Done
 - Color Scheme
     - Black
     - White
     - Red
+
+- Add a No search results page
 
 - Render the main view
   - Has header splash image
@@ -50,6 +49,11 @@ All icons are from https://heroicons.com/
       - if no results, 
         - splash displays a random movie
         - Display text show "No Results"
+
+- on top of the grid movies
+  - if user clicks on playlist button,
+    - playlist displays on the grid area
+    - splash should show first item and is clickable like the others 
 
 
 ## Summary Questions

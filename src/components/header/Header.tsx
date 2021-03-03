@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import classNames from "classnames";
 import { SearchBar } from "./Search";
-import { PlaylistButton } from "./PlaylistButton";
+import { HeaderButton } from "./HeaderButton";
 
 import "./header.css";
 
@@ -41,7 +41,7 @@ function DesktopHeader({ scrolled }: { scrolled?: boolean }) {
         <div className={className}>
             <HeaderTitle />
             <SearchBar />
-            <PlaylistButton />
+            <HeaderButton />
         </div>
     );
 }
@@ -55,7 +55,7 @@ function MobileHeader({ scrolled }: { scrolled?: boolean }) {
         <div className={className}>
             <div className="app__header_mobile_title">
                 <HeaderTitle />
-                <PlaylistButton />
+                <HeaderButton />
             </div>
             <SearchBar className="app__header_mobile_search" />
         </div>

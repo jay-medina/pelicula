@@ -9,7 +9,7 @@ export function movies(state = initialState, action: MovieAction): Movies {
         const oldMovie = state[payload.id];
 
         // dont add it if it already exists
-        if(oldMovie) {
+        if (oldMovie) {
             return state;
         }
 
@@ -31,6 +31,22 @@ export function movies(state = initialState, action: MovieAction): Movies {
                 title: payload.title,
                 rating: payload.rating,
                 genre: payload.genre,
+            },
+        };
+    }
+
+    if (action.type === "movie/updatePlaylist") {
+        const { payload } = action;
+
+        const movie = state[payload.movieId];
+
+        if (!movie) return state;
+
+        return {
+            ...state,
+            [movie.id]: {
+                ...movie,
+                saved: payload.save,
             },
         };
     }

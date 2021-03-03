@@ -49,6 +49,7 @@ function responseToMovie(res: MovieResponse): Movie {
         poster,
         mediumPoster: medium,
         largePoster: large,
+        saved: false,
     };
 }
 
