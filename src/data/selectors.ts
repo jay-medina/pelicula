@@ -13,6 +13,10 @@ interface GetMoviePayload {
  * If query is empty, just return the first 1000
  */
 export function getListOfMovies(state: AppState, { query }: GetListOfMoviesPayload): Movie[] {
+    if (isViewingSaved(state)) {
+        return getSavedMovies(state);
+    }
+
     const movies = Object.values(state.movies);
 
     if (!query) return movies.slice(0, 1000);

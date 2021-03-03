@@ -1,4 +1,6 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { isViewingSaved } from "../../data/selectors";
 import { Movie } from "../../data/types";
 
 import "./grid.css";
@@ -22,7 +24,7 @@ interface GridItemProps {
 export function Grid({ movies, onClick, query }: GridProps) {
     return (
         <div className="app__grid">
-            <GridTitle movies={movies} query={query}></GridTitle>
+            <GridTitle movies={movies} query={query} />
             <div className="app__grid_items">
                 {movies.map((movie, index) => (
                     <GridItem key={movie.id} movie={movie} onClick={() => onClick(index)} />
@@ -33,6 +35,12 @@ export function Grid({ movies, onClick, query }: GridProps) {
 }
 
 function GridTitle(props: GridTitleProps) {
+    const viewSaved = useSelector(isViewingSaved);
+
+    if (viewSaved) {
+        return <GridSavedMoviesTitle {...props} />;
+    }
+
     if (props.query.length === 0) {
         return <div className="app__grid_title">All Movies</div>;
     }
@@ -42,6 +50,14 @@ function GridTitle(props: GridTitleProps) {
     }
 
     return <div className="app__grid_title">{props.query} Movies</div>;
+}
+
+function GridSavedMoviesTitle(props: GridTitleProps) {
+    if (props.movies.length === 0) {
+        return <div className="app__grid_title app__grid_no_movies">No saved movies</div>;
+    }
+
+    return <div className="app__grid_title">Saved Playlist</div>;
 }
 
 function GridItem({ movie, onClick }: GridItemProps) {
