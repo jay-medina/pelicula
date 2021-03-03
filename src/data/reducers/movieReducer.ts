@@ -35,7 +35,7 @@ export function movies(state = initialState, action: MovieAction): Movies {
         };
     }
 
-    if (action.type === "movie/updatePlaylist") {
+    if (action.type === "movie/updateSavedPlaylist") {
         const { payload } = action;
 
         const movie = state[payload.movieId];

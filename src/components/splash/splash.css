@@ -23,6 +23,7 @@
 .app__splash_title {
     font-weight: bold;
     font-size: 2rem;
+    margin-right: 0.25rem;
 }
 
 .app__splash_info {
@@ -40,4 +41,18 @@
 
 .app__splash_genre {
     margin-left: 0.25rem;
+}
+
+.app__splash_save_button {
+    color: var(--white);
+}
+
+.app__splash_save_icon {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.15s;
+}
+
+.app__splash_save_icon:hover {
+    transform: scale(1.25);
 }

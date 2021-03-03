@@ -15,8 +15,8 @@ interface UpdateMovie {
     };
 }
 
-interface UpdatePlaylist {
-    type: "movie/updatePlaylist";
+interface UpdateSavedPlaylist {
+    type: "movie/updateSavedPlaylist";
     payload: {
         movieId: string;
         save: boolean;
@@ -41,7 +41,7 @@ interface SetViewSaved {
     type: "movie/viewSaved";
     payload: {
         view: boolean;
-    }
+    };
 }
 
 export function addMovie(payload: AddMovie["payload"]): AddMovie {
@@ -58,9 +58,9 @@ export function updateMovie(payload: UpdateMovie["payload"]): UpdateMovie {
     };
 }
 
-export function updatePlaylist(payload: UpdatePlaylist["payload"]): UpdatePlaylist {
+export function updateSavedPlaylist(payload: UpdateSavedPlaylist["payload"]): UpdateSavedPlaylist {
     return {
-        type: "movie/updatePlaylist",
+        type: "movie/updateSavedPlaylist",
         payload,
     };
 }
@@ -86,5 +86,5 @@ export function setViewSaved(payload: SetViewSaved["payload"]): SetViewSaved {
     };
 }
 
-export type MovieAction = AddMovie | UpdateMovie | UpdatePlaylist;
+export type MovieAction = AddMovie | UpdateMovie | UpdateSavedPlaylist;
 export type SearchAction = UpdateSearchQuery | SetLoading | SetViewSaved;

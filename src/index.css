@@ -41,6 +41,16 @@ body {
     border-radius: 3px;
 }
 
+.app__no_style_button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.app__no_style_button:focus {
+    outline: none;
+}
+
 @keyframes spin {
     from {
         transform: rotate(0deg);
