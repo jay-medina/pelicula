@@ -50,6 +50,8 @@
 .app__grid_item_fallback_text {
     font-size: 0.5rem;
     z-index: -1;
+    display: flex;
+    justify-content: space-between;
 }
 
 .app__grid_item_title {

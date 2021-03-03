@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { isViewingSaved } from "../../data/selectors";
-import { setViewSaved } from "../../data/actions";
+import { resetSelectedMovie, setViewSaved } from "../../data/actions";
 import { BookmarkSaved, Collection } from "../icons/icons";
 
 interface ButtonProps {
@@ -13,6 +13,7 @@ export function HeaderButton() {
     const viewSaved = useSelector(isViewingSaved);
 
     const onClick = useCallback(() => {
+        dispatch(resetSelectedMovie());
         dispatch(setViewSaved({ view: !viewSaved }));
     }, [dispatch, viewSaved]);
 

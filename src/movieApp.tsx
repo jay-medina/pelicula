@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Provider, useDispatch, useSelector } from "react-redux";
 import { AppState, AppStore, Movie } from "./data/types";
-import { getSearchQuery, isLoading } from "./data/selectors";
+import { getSearchQuery, getSelectedMovie, isLoading } from "./data/selectors";
 
 import { Header } from "./components/header/Header";
 import { Splash } from "./components/splash/Splash";
@@ -9,14 +9,15 @@ import { Grid } from "./components/grid/Grid";
 import { searchForMovies } from "./data/thunks";
 import { getListOfMovies } from "./data/selectors";
 import { LoadingScreen } from "./components/loading/loading";
-import { setLoading } from "./data/actions";
+import { resetSelectedMovie, setLoading } from "./data/actions";
 
 interface Props {
     store: AppStore;
 }
 
 function MovieLayout() {
-    const [pos, setPos] = useState(0);
+    const [initialLoad, setInitialLoad] = useState(true);
+    const currentSelectedMovie = useSelector(getSelectedMovie);
     const query = useSelector(getSearchQuery);
     const loading = useSelector(isLoading);
     const dispatch = useDispatch();
@@ -26,29 +27,39 @@ function MovieLayout() {
         async function search() {
             dispatch(setLoading({ isLoading: true }));
             await dispatch(searchForMovies({ query }));
+            setInitialLoad(false);
             dispatch(setLoading({ isLoading: false }));
         }
 
-        setPos(0);
+        dispatch(resetSelectedMovie());
         search();
     }, [dispatch, query]);
 
-    if (movies.length === 0) {
+    if (initialLoad) {
         return (
             <div className="app">
-                <Grid movies={movies} onClick={setPos} query={query} />
                 <Header />
                 <LoadingScreen isLoading={loading} />
             </div>
         );
     }
 
-    const selectedMovie = movies[pos];
+    if (movies.length === 0) {
+        return (
+            <div className="app">
+                <Grid movies={movies} query={query} />
+                <Header />
+                <LoadingScreen isLoading={loading} />
+            </div>
+        );
+    }
+
+    const selectedMovie = currentSelectedMovie || movies[0];
 
     return (
         <div className="app">
             <Splash movie={selectedMovie} />
-            <Grid movies={movies} onClick={setPos} query={query} />
+            <Grid movies={movies} query={query} />
             <Header />
             <LoadingScreen isLoading={loading} />
         </div>

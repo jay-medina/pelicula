@@ -1,14 +1,15 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useCallback, MouseEvent } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setSelectedMovie, updateSavedPlaylist } from "../../data/actions";
 import { isViewingSaved } from "../../data/selectors";
 import { Movie } from "../../data/types";
+import { Bookmark } from "../icons/icons";
 
 import "./grid.css";
 
 interface GridProps {
     movies: Movie[];
     query: string;
-    onClick: (pos: number) => void;
 }
 
 interface GridTitleProps {
@@ -21,13 +22,26 @@ interface GridItemProps {
     onClick: () => void;
 }
 
-export function Grid({ movies, onClick, query }: GridProps) {
+interface SaveButtonProps {
+    movie: Movie;
+}
+
+export function Grid({ movies, query }: GridProps) {
+    const dispatch = useDispatch();
+
+    const onGridItemClick = useCallback(
+        (id: string) => {
+            dispatch(setSelectedMovie({ movieId: id }));
+        },
+        [dispatch]
+    );
+
     return (
         <div className="app__grid">
             <GridTitle movies={movies} query={query} />
             <div className="app__grid_items">
-                {movies.map((movie, index) => (
-                    <GridItem key={movie.id} movie={movie} onClick={() => onClick(index)} />
+                {movies.map((movie) => (
+                    <GridItem key={movie.id} movie={movie} onClick={() => onGridItemClick(movie.id)} />
                 ))}
             </div>
         </div>
@@ -69,11 +83,38 @@ function GridItem({ movie, onClick }: GridItemProps) {
                     backgroundImage: `url("${movie.poster}")`,
                 }}
             >
-                <span className="app__grid_item_fallback_text">
-                    <span className="app__grid_item_title">{movie.title}</span> ({movie.year})
-                </span>
+                <div className="app__grid_item_fallback_text">
+                    <div>
+                        <span className="app__grid_item_title">{movie.title}</span>
+                        <span>({movie.year})</span>
+                    </div>
+                    <SaveButton movie={movie} />
+                </div>
             </div>
         </div>
     );
-    return <div>{movie.title}</div>;
+}
+
+function SaveButton({ movie }: SaveButtonProps) {
+    const dispatch = useDispatch();
+
+    const onClick = useCallback(
+        (e: MouseEvent<HTMLButtonElement>) => {
+            e.stopPropagation();
+
+            dispatch(
+                updateSavedPlaylist({
+                    movieId: movie.id,
+                    save: !movie.saved,
+                })
+            );
+        },
+        [dispatch, movie.id, movie.saved]
+    );
+
+    return (
+        <button className="app__no_style_button app__splash_save_button" onClick={onClick}>
+            <Bookmark className="app__splash_save_icon" filled={movie.saved} />
+        </button>
+    );
 }

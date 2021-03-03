@@ -20,7 +20,10 @@ export interface SearchResults {
     viewSaved: boolean;
 }
 
-export type Movies = Record<Movie["id"], Movie>;
+export type Movies = {
+    allMovies: Record<Movie["id"], Movie>;
+    selectedMovieId?: Movie["id"];
+};
 
 export interface AppState {
     movies: Movies;

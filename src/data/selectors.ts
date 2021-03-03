@@ -17,7 +17,7 @@ export function getListOfMovies(state: AppState, { query }: GetListOfMoviesPaylo
         return getSavedMovies(state);
     }
 
-    const movies = Object.values(state.movies);
+    const movies = Object.values(state.movies.allMovies);
 
     if (!query) return movies.slice(0, 1000);
 
@@ -40,13 +40,21 @@ export function getListOfMovies(state: AppState, { query }: GetListOfMoviesPaylo
 }
 
 export function getSavedMovies(state: AppState): Movie[] {
-    const allMovies = Object.values(state.movies);
+    const allMovies = Object.values(state.movies.allMovies);
 
     return allMovies.filter((movie) => movie.saved);
 }
 
+export function getSelectedMovie(state: AppState): Movie | undefined {
+    const { selectedMovieId, allMovies } = state.movies;
+
+    if (!selectedMovieId) return;
+
+    return allMovies[selectedMovieId];
+}
+
 export function getMovieRating(state: AppState, payload: GetMoviePayload): Movie["rating"] {
-    return state.movies[payload.id]?.rating;
+    return state.movies.allMovies[payload.id]?.rating;
 }
 
 export function getSearchQuery(state: AppState): string {

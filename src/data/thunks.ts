@@ -55,9 +55,6 @@ function responseToMovie(res: MovieResponse): Movie {
 
 function searchAndAddMovies(payload: SearchForMoviesPayload) {
     return async (dispatch: ThunkDispatch) => {
-        // if (!morePokemonExist(state) || isLoading(state)) return;
-
-        // dispatch(updateFetching({ fetching: true }));
         const { query } = payload;
 
         if (!query) return;

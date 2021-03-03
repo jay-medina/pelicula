@@ -15,6 +15,17 @@ interface UpdateMovie {
     };
 }
 
+interface SetSelectedMovie {
+    type: "movie/setSelected";
+    payload: {
+        movieId: string;
+    };
+}
+
+interface ResetSelectedMovie {
+    type: "movie/resetSelected";
+}
+
 interface UpdateSavedPlaylist {
     type: "movie/updateSavedPlaylist";
     payload: {
@@ -86,5 +97,18 @@ export function setViewSaved(payload: SetViewSaved["payload"]): SetViewSaved {
     };
 }
 
-export type MovieAction = AddMovie | UpdateMovie | UpdateSavedPlaylist;
+export function setSelectedMovie(payload: SetSelectedMovie["payload"]): SetSelectedMovie {
+    return {
+        type: "movie/setSelected",
+        payload,
+    };
+}
+
+export function resetSelectedMovie(): ResetSelectedMovie {
+    return {
+        type: "movie/resetSelected",
+    };
+}
+
+export type MovieAction = AddMovie | UpdateMovie | UpdateSavedPlaylist | SetSelectedMovie | ResetSelectedMovie;
 export type SearchAction = UpdateSearchQuery | SetLoading | SetViewSaved;
