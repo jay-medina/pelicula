@@ -64,13 +64,22 @@
     height: 18px;
 }
 
-.app__header_playlist_button {
+.app__header_button {
     background-color: var(--red);
     color: white;
 }
 
-.app__header_playlist_button:hover {
+.app__header_button:hover {
     background-color: var(--darker-red);
+}
+
+.app__header_collection_button {
+    background-color: var(--white);
+    color: black;
+}
+
+.app__header_collection_button:hover {
+    background-color: rgba(255, 255, 255, 0.75);
 }
 
 .app__header_search_button {
@@ -82,7 +91,7 @@
     background-color: var(--darker-red);
 }
 
-.app__header_playlist_icon {
+.app__header_icon {
     margin-right: 0.25rem;
 }
 
@@ -106,11 +115,11 @@
         font-size: 0.8rem;
     }
 
-    .app__header_playlist_text {
+    .app__header_text {
         display: none;
     }
 
-    .app__header_playlist_icon {
+    .app__header_icon {
         margin-right: 0;
     }
 }
