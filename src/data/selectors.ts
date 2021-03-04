@@ -29,9 +29,7 @@ export function getListOfMovies(state: AppState, { query }: GetListOfMoviesPaylo
     for (const movie of movies) {
         const titleLowerCased = movie.title.toLowerCase();
 
-        if (titleLowerCased === queryLowerCased) {
-            li.unshift(movie);
-        } else if (titleLowerCased.includes(queryLowerCased)) {
+        if (titleLowerCased === queryLowerCased || titleLowerCased.includes(queryLowerCased)) {
             li.push(movie);
         }
     }

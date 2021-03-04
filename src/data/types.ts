@@ -12,6 +12,10 @@ export interface Movie {
     rating?: string;
     genre?: string;
     saved: boolean;
+    plot?: string;
+    actors?: string;
+    director?: string;
+    writer?: string;
 }
 
 export interface SearchResults {

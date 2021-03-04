@@ -5,13 +5,12 @@ Demo movie viewer
 All icons are from https://heroicons.com/
 
 ## TODO
-- Splash Image
-  - Have a way to expand Splash image to view more info? 
 
 - Have a way to save movie to a playlist
   - Store movies in local storage (no way to persist)
 
 - Include a footer that says "My favorite color is {your favorite color}"
+
 
 - Build bundle and deploy to github
 

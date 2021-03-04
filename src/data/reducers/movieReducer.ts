@@ -35,9 +35,7 @@ export function movies(state = initialState, action: MovieAction): Movies {
                 ...state.allMovies,
                 [payload.id]: {
                     ...oldMovie,
-                    title: payload.title,
-                    rating: payload.rating,
-                    genre: payload.genre,
+                    ...payload,
                 },
             },
         };
@@ -48,7 +46,6 @@ export function movies(state = initialState, action: MovieAction): Movies {
 
         const movie = state.allMovies[payload.movieId];
 
-        console.log(movie, payload.save);
         if (!movie) return state;
 
         return {

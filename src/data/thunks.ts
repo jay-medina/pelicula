@@ -101,6 +101,10 @@ export function searchForMovieById(payload: SearchForMovieByIdPayload) {
                 title: data.Title,
                 rating: data.Rated,
                 genre: data.Genre,
+                plot: data.Plot,
+                actors: data.Actors,
+                director: data.Director,
+                writer: data.Writer,
             })
         );
     };

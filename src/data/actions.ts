@@ -12,6 +12,10 @@ interface UpdateMovie {
         title: string;
         rating: string;
         genre: string;
+        plot?: string;
+        actors?: string;
+        director?: string;
+        writer?: string;
     };
 }
 

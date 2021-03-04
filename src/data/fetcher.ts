@@ -34,6 +34,10 @@ interface SearchDetailsResponse {
     Rated: string;
     Genre: string;
     imdbID: string;
+    Actors: string;
+    Director: string;
+    Plot: string;
+    Writer: string;
 }
 
 export async function search({ query, page = 1 }: SearchForMoviesPayload): Promise<SearchResponse> {
