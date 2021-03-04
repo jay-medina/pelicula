@@ -6,13 +6,8 @@ All icons are from https://heroicons.com/
 
 ## TODO
 
-- Include a footer that says "My favorite color is {your favorite color}"
-
 
 - Build bundle and deploy to github
-
-
-## Done
 
 
 ## Summary Questions

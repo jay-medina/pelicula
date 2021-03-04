@@ -5,6 +5,7 @@
     --grey: #302f2f;
     --red: #e50a13;
     --darker-red: #a8060b;
+    --jayz-blue: #211abf;
 }
 
 * {
@@ -90,4 +91,25 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.app__footer {
+    display: flex;
+    justify-content: space-around;
+    padding: 2rem 1rem;
+    font-size: 0.5rem;
+}
+
+.app__footer_color {
+    background-color: var(--jayz-blue);
+}
+
+@media screen and (max-width: 768px) {
+    .app__footer {
+        display: block;
+    }
+
+    .app__footer > div {
+        margin-bottom: 0.5rem;
+    }
 }

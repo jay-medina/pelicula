@@ -8,7 +8,7 @@
 }
 
 .app__splash_open {
-    height: 90vh;
+    height: 95vh;
 }
 
 .app__splash_img {
@@ -108,6 +108,7 @@
     justify-content: space-between;
     margin-right: 2rem;
     max-height: 180px;
+    overflow: hidden;
 }
 
 .app__splash_more_info_section > div {
@@ -124,6 +125,14 @@
 }
 
 @media screen and (max-width: 768px) {
+    .app__splash {
+        height: 75vh;
+    }
+
+    .app__splash_open {
+        height: 100vh;
+    }
+
     .app__splash_more_info_section {
         display: block;
     }
@@ -132,8 +141,17 @@
         margin-bottom: 0.5rem;
     }
 
+    .app__splash_more_info {
+        /* max-height: 13rem; */
+        overflow: scroll;
+    }
+
     .app__splash_more_info_section > div {
         margin-bottom: 0.5rem;
         max-width: 100%;
+    }
+
+    .app__splash_content {
+        top: 6rem;
     }
 }

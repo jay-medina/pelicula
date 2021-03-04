@@ -10,6 +10,7 @@ import { searchForMovies } from "./data/thunks";
 import { getListOfMovies } from "./data/selectors";
 import { LoadingScreen } from "./components/loading/loading";
 import { resetSelectedMovie, setLoading } from "./data/actions";
+import { Footer } from "./components/footer/footer";
 
 interface Props {
     store: AppStore;
@@ -70,6 +71,7 @@ export function MovieApp({ store }: Props) {
     return (
         <Provider store={store}>
             <MovieLayout />
+            <Footer />
         </Provider>
     );
 }
