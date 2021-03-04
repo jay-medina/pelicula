@@ -1,7 +1,7 @@
 /** @type {import("snowpack").SnowpackUserConfig } */
 module.exports = {
     mount: {
-        src: "src",
+        src: "/src",
         public: "/",
     },
     plugins: ["@snowpack/plugin-optimize", "@snowpack/plugin-typescript"],
