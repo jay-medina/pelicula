@@ -6,9 +6,6 @@ All icons are from https://heroicons.com/
 
 ## TODO
 
-- Have a way to save movie to a playlist
-  - Store movies in local storage (no way to persist)
-
 - Include a footer that says "My favorite color is {your favorite color}"
 
 

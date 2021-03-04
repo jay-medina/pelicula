@@ -1,7 +1,8 @@
 import { search, searchDetailsById } from "./fetcher";
-import { addMovie, updateMovie } from "./actions";
+import { addMovie, updateMovie, updateSavedPlaylist, UpdateSavedPlaylist } from "./actions";
 import { AppState, ThunkDispatch, Movie } from "./types";
 import { getMovieRating } from "./selectors";
+import { savePlaylist } from "./localStore";
 
 const demoImg = "/images/movie.jpg";
 
@@ -107,5 +108,12 @@ export function searchForMovieById(payload: SearchForMovieByIdPayload) {
                 writer: data.Writer,
             })
         );
+    };
+}
+
+export function saveMovieToPlaylist(payload: UpdateSavedPlaylist["payload"]) {
+    return async (dispatch: ThunkDispatch, getState: () => AppState) => {
+        dispatch(updateSavedPlaylist(payload));
+        savePlaylist(getState());
     };
 }

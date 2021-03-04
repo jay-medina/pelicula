@@ -30,7 +30,7 @@ interface ResetSelectedMovie {
     type: "movie/resetSelected";
 }
 
-interface UpdateSavedPlaylist {
+export interface UpdateSavedPlaylist {
     type: "movie/updateSavedPlaylist";
     payload: {
         movieId: string;

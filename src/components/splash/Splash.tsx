@@ -2,8 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import classNames from "classnames";
 import { Movie } from "../../data/types";
-import { searchForMovieById } from "../../data/thunks";
-import { updateSavedPlaylist } from "../../data/actions";
+import { searchForMovieById, saveMovieToPlaylist } from "../../data/thunks";
 import { Bookmark, ChevronDown, ChevronUp } from "../icons/icons";
 
 import "./splash.css";
@@ -106,7 +105,7 @@ function SaveButton({ movie }: SaveButtonProps) {
 
     const onClick = useCallback(() => {
         dispatch(
-            updateSavedPlaylist({
+            saveMovieToPlaylist({
                 movieId: movie.id,
                 save: !movie.saved,
             })

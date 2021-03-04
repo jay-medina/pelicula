@@ -3,6 +3,7 @@ import { createStore as reduxCreateStore, combineReducers, applyMiddleware } fro
 import { ThunkDispatch, AppStore, AppState } from "./types";
 import { movies } from "./reducers/movieReducer";
 import { searchResults } from "./reducers/searchReducer";
+import { getPlaylist } from "./localStore";
 
 export function createStore(): AppStore {
     const createReduxEnhancers = () => applyMiddleware<ThunkDispatch>(thunk);
@@ -12,8 +13,11 @@ export function createStore(): AppStore {
         searchResults,
     });
 
-    // TODO populate saved list from local storage
-    const initial = {};
+    const initial: Partial<AppState> = {
+        movies: {
+            allMovies: getPlaylist() || {},
+        },
+    };
 
     return reduxCreateStore(reducer, initial, createReduxEnhancers());
 }

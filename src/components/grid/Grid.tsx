@@ -1,6 +1,7 @@
 import React, { useCallback, MouseEvent } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setSelectedMovie, updateSavedPlaylist } from "../../data/actions";
+import { setSelectedMovie } from "../../data/actions";
+import { saveMovieToPlaylist } from "../../data/thunks";
 import { isViewingSaved } from "../../data/selectors";
 import { Movie } from "../../data/types";
 import { Bookmark } from "../icons/icons";
@@ -103,7 +104,7 @@ function SaveButton({ movie }: SaveButtonProps) {
             e.stopPropagation();
 
             dispatch(
-                updateSavedPlaylist({
+                saveMovieToPlaylist({
                     movieId: movie.id,
                     save: !movie.saved,
                 })

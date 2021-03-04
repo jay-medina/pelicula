@@ -41,7 +41,7 @@ interface SearchDetailsResponse {
 }
 
 export async function search({ query, page = 1 }: SearchForMoviesPayload): Promise<SearchResponse> {
-    const urlToSend = `${MOVIE_URL}?apikey=${MOVIE_API_KEY}&s=${query}&page=${page}`;
+    const urlToSend = `${MOVIE_URL}?apikey=${MOVIE_API_KEY}&s=${query}&type=movie&page=${page}`;
 
     const result = await fetch(urlToSend);
 
