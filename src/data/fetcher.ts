@@ -2,7 +2,7 @@
  * This is not the d̶r̶o̶i̶d̶s̶ key you are looking for. *Hand waves*
  */
 const MOVIE_API_KEY = "342dfc75";
-const MOVIE_URL = "http://www.omdbapi.com/";
+const MOVIE_URL = "https://www.omdbapi.com/";
 
 interface SearchForMoviesPayload {
     query: string;
