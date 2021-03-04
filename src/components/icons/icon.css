@@ -1,0 +1,12 @@
+.bookmark__icon,
+.search__icon,
+.star__icon,
+.collection__icon,
+.chevron__icon {
+    width: 14px;
+    height: 14px;
+}
+
+.chevron__up_icon {
+    transform: rotate(180deg);
+}
