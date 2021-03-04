@@ -6,9 +6,8 @@
   "scripts": {
     "start": "snowpack dev",
     "clean": "rm -rf build",
-    "build": "npm run clean && npm run lint && npm run test:coverage && snowpack build",
-    "lint": "npm run eslint && npm run typecheck",
-    "eslint": "eslint src/**",
+    "build": "npm run clean && npm run lint && snowpack build",
+    "lint": "npm run typecheck",
     "typecheck": "tsc --noEmit",
     "test": "jest",
     "test:coverage": "jest --coverage"
